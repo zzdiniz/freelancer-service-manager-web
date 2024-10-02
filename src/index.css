@@ -1,0 +1,35 @@
+:root{
+  --primary: #4e73df;
+  --bg-gradient-primary: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+  --white: #FFF;
+
+  --spacing-xxx-small: 4px;
+  --spacing-xx-small: 8px;
+  --spacing-xy-small: 12px;
+  --spacing-x-small: 16px;
+  --spacing-small: 24px;
+  --spacing-medium: 32px;
+  --spacing-x-medium: 34px;
+  --spacing-large: 40px;
+  --spacing-x-large: 48px;
+  --spacing-xx-large: 56px;
+  --spacing-xxx-large: 64px;
+  --spacing-xxxx-large: 72px;
+
+  --radius-none: 0px;
+  --radius-xxs: 4px;
+  --radius-xs: 8px;
+  --radius-s: 16px;
+  --radius-medium: 24px;
+  --radius-large: 32px;
+}
+body{
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+#root{
+  width: 100%;
+  height: 100%;
+}
