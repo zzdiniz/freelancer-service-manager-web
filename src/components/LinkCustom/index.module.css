@@ -1,0 +1,13 @@
+.link{
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: var(--primary);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.link:hover{
+    text-decoration: underline;
+}

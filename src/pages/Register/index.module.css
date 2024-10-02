@@ -1,4 +1,4 @@
-.loginWrapper{
+.registerWrapper{
     background-color: var(--bg-primary);
     background-image: var(--bg-gradient-primary);
     object-fit: cover;
@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
 }
-.loginContainer{
+.registerContainer{
     background-color: var(--white);
     width: 100%;
     margin: var(--spacing-small);

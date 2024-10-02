@@ -1,0 +1,8 @@
+.textInput{
+    padding: var(--spacing-x-small);
+    width: 100%;
+    border: 1px solid var(--light-grey);
+    border-radius: var(--radius-large);
+    font-size: 16px;
+    line-height: 21px;
+}
