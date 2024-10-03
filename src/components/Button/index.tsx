@@ -6,7 +6,7 @@ interface ButtonProps{
 }
 const Button = ({children}:ButtonProps) =>{
     return (
-        <button className={customStyles.button}>{children}</button>
+        <button type='submit' className={customStyles.button}>{children}</button>
     )
 }
 
