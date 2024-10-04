@@ -24,7 +24,7 @@ const useAuth = () => {
     try {
       const response = await fetch(`${baseURL}provider/create`, requestOptions);
       const data = await response.json();
-      if (response.ok) {
+      if (response.status === 200) {
         authUser(data);
         navigate("/");
       }
@@ -55,7 +55,7 @@ const useAuth = () => {
     try {
       const response = await fetch(`${baseURL}provider/login`, requestOptions);
       const data = await response.json();
-      if (response.ok) {
+      if (response.status === 200) {
         authUser(data);
         navigate("/");
       }
