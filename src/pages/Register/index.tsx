@@ -16,7 +16,6 @@ const Register = () =>{
     };
     const handleSubimit = (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      console.log('user',user)
       registerUser(user);
     };
     
