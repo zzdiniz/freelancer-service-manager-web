@@ -7,6 +7,7 @@ import RegisterBot from "./pages/RegisterBot";
 import EditProfile from "./pages/EditProfile";
 import Calendar from "./pages/Calendar";
 import { UserProvider } from "./context/UserContext";
+import AddServices from "./pages/AddServices";
 const App = () => {
   return (
     <Router>
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/reports" element={<Reports />} />
         <Route path="/requests" element={<Requests />} />
         <Route path="/register/bot" element={<RegisterBot />} />
+        <Route path="/register/service" element={<AddServices />} />
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/" element={<Calendar />} />
       </Routes>

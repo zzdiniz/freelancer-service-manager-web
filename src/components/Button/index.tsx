@@ -2,11 +2,13 @@ import { ReactNode } from 'react';
 import customStyles from './index.module.css'
 
 interface ButtonProps{
-    children: ReactNode
+    children: ReactNode;
+    type?: "button" | "submit";
+    onClick?: () => void
 }
-const Button = ({children}:ButtonProps) =>{
+const Button = ({children,type="submit",onClick}:ButtonProps) =>{
     return (
-        <button type='submit' className={customStyles.button}>{children}</button>
+        <button type={type} className={customStyles.button} onClick={onClick}>{children}</button>
     )
 }
 
