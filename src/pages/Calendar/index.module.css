@@ -1,0 +1,34 @@
+.calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%; /* Largura total da tabela */
+}
+
+th, td {
+    border: 1px solid #ccc; /* Borda para células */
+    padding: 10px;
+    text-align: center;
+}
+
+.hoursHeader {
+    background-color: #f0f0f0; /* Cor do cabeçalho das horas */
+    font-weight: bold;
+}
+
+.cell.available {
+    background-color: #e0f7fa; /* Cor para status disponível */
+}
+
+.cell.scheduled {
+    background-color: #ffe082; /* Cor para status agendado */
+}
+
+.cell.done {
+    background-color: #c8e6c9; /* Cor para status concluído */
+}
