@@ -1,7 +1,7 @@
 export default interface Provider {
-    name: string
-    email: string
-    password: string
-    confirmedPassword: string
-  }
-  
+  id?: number;
+  name: string;
+  email: string;
+  password: string;
+  confirmedPassword: string;
+}

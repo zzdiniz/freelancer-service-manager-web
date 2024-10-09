@@ -1,16 +1,22 @@
 import Provider from "../types/Provider";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import providerService from "../services/providerService";
 
 const baseURL = process.env.REACT_APP_API;
 
 const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [provider,setProvider] = useState<Provider>()
   const navigate = useNavigate();
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       setIsAuthenticated(true);
+      (async()=>{
+        const response = await providerService.getByToken()
+        setProvider(response)
+      })()
     }
   }, []);
   const registerUser = async (provider: Provider | {}) => {
@@ -63,7 +69,7 @@ const useAuth = () => {
       console.error(error);
     }
   };
-  return { registerUser, isAuthenticated, logout, login };
+  return { registerUser, isAuthenticated, logout, login , provider};
 };
 
 export default useAuth;

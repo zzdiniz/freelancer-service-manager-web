@@ -21,6 +21,10 @@ th, td {
     font-weight: bold;
 }
 
+.cell{
+    cursor: pointer;
+}
+
 .cell.available {
     background-color: #e0f7fa; /* Cor para status disponível */
 }

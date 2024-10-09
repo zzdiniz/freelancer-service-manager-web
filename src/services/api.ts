@@ -13,6 +13,10 @@ const api = {
       return apiRequest(url, 'PUT', body);
     },
 
+    patch: async (url: string, body: any) => {
+      return apiRequest(url, 'PATCH', body);
+    },
+
     delete: async (url: string) => {
       return apiRequest(url, 'DELETE');
     }
