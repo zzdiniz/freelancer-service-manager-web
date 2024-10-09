@@ -1,13 +1,22 @@
 // WeeklyCalendar.tsx
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 import Appointment from '../../types/Appointment';
 import customStyles from './index.module.css';
 import appointmentService from '../../services/appointmentServices';
+import { UserContext } from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const WeeklyCalendar = () => {
     const [weekDays, setWeekDays] = useState<DateTime[]>([]);
     const [appointments, setAppointments] = useState<Appointment[]>([]);
+
+    const useAuth = useContext(UserContext);
+    const { isAuthenticated } = useAuth();
+    const navigate = useNavigate();
+    if(!isAuthenticated){
+        navigate("/login")
+    }
 
     useEffect(() => {
         // Obter a data atual no fuso horário brasileiro

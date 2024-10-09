@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import Button from "../../components/Button";
-import TextInput from "../../components/TextInput";
+import Button from "../../components/common/Button";
+import TextInput from "../../components/common/TextInput";
 import customStyles from "./index.module.css";
 import Service from "../../types/Service";
 import servicesOfferedService from "../../services/servicesOfferedService";

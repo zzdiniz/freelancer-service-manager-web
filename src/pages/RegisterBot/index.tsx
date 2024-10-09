@@ -1,9 +1,9 @@
-import TextInput from '../../components/TextInput';
+import TextInput from '../../components/common/TextInput';
 import customStyles from './index.module.css'
-import Button from '../../components/Button';
+import Button from '../../components/common/Button';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import botService from '../../services/botService';
-import Loader from '../../components/Loader';
+import Loader from '../../components/ui/Loader';
 
 const RegisterBot = () => {
   const [name, setName] = useState("")

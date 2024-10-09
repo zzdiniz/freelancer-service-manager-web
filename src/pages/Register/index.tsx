@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useContext, useState } from 'react'
-import Button from '../../components/Button'
-import LinkCustom from '../../components/LinkCustom'
-import TextInput from '../../components/TextInput'
+import Button from '../../components/common/Button'
+import LinkCustom from '../../components/common/LinkCustom'
+import TextInput from '../../components/common/TextInput'
 import customStyles from './index.module.css'
 import { UserContext } from '../../context/UserContext'
 const Register = () =>{
