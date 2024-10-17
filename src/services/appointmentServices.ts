@@ -13,6 +13,10 @@ const appointmentService = {
     updateStatus: async(id:number,status:string) =>{
         const response = await api.patch(`appointment/update-status`,{id,status})
         return await response.json()
+    },
+    setDone: async() =>{
+        const response = await api.patch(`appointment/set-done`)
+        return await response.json()
     }
 }
 

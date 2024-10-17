@@ -9,7 +9,7 @@ const Requests = () => {
   const [providerResponse, setProviderResponse] = useState("");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
     setProviderResponse(value);
   };
   const handleSubimit = (event: FormEvent<HTMLFormElement>) => {
@@ -27,7 +27,7 @@ const Requests = () => {
       setMessageRequests(response.requests);
     })();
   }, []);
-  console.log("🚀 ~ response :", messageRequests);
+
   return (
     <div className={customStyles.messageRequestsWrapper}>
       <div className={customStyles.messageRequestsContainer}>

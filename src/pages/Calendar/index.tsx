@@ -27,6 +27,9 @@ const WeeklyCalendar = () => {
   }
 
   useEffect(() => {
+    (async () => {
+      await appointmentService.setDone();
+    })();
     // Obter a data atual no fuso horário brasileiro
     const now = DateTime.now().setZone("America/Sao_Paulo").setLocale("pt");
 
