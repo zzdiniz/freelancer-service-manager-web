@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import providerService from "../services/providerService";
 
-const baseURL = process.env.REACT_APP_API;
+const baseURL = "http://localhost:3000/";
 
 const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
