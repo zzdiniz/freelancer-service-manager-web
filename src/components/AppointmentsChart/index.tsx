@@ -1,43 +1,36 @@
-
-import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
 
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
-import { AppointmentsPerMonth } from "@/types/Metrics"
-
-export const description = "A bar chart with a label"
+} from "@/components/ui/chart";
+import { AppointmentsPerMonth } from "@/types/Metrics";
 
 interface AppointmentsChartProps {
-  appointmentsPerMonth: AppointmentsPerMonth[]
+  appointmentsPerMonth: AppointmentsPerMonth[];
 }
 
-const AppointmentsChart = ({appointmentsPerMonth}:AppointmentsChartProps) => {
-
+const AppointmentsChart = ({ appointmentsPerMonth }: AppointmentsChartProps) => {
   const chartConfig = {
     appointments: {
       label: "Agendamentos",
       color: "hsl(var(--chart-1))",
     },
-  } satisfies ChartConfig
+  } satisfies ChartConfig;
 
   return (
-    <Card className="max-w-[600px]">
+    <Card className="rounded-xl border bg-card text-card-foreground shadow col-span-4">
       <CardHeader>
-        <CardTitle>Bar Chart - Label</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Agendamentos Mensais</CardTitle>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -72,17 +65,12 @@ const AppointmentsChart = ({appointmentsPerMonth}:AppointmentsChartProps) => {
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
         <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
+          Total de agendamentos durante o ano
         </div>
       </CardFooter>
     </Card>
-  )
-}
+  );
+};
 
-
-
-export default AppointmentsChart
+export default AppointmentsChart;
