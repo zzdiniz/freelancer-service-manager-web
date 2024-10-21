@@ -3,12 +3,18 @@ export interface Metrics {
   averageTicket: number;
   cancellationRate: number;
   retentionRate: number;
-  mostFrequentServiceId: string;
+  mostFrequentServiceId: number;
   averageRating: number;
   appointmentsPerMonth: AppointmentsPerMonth[];
+  occupationRate: OccupationRate
 }
 
 export interface AppointmentsPerMonth {
   month: string;
   appointments: number;
+}
+
+export interface OccupationRate {
+  availableDates: number;
+  busyDates: number;
 }
