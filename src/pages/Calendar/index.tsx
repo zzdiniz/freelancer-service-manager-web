@@ -7,6 +7,7 @@ import appointmentService from "../../services/appointmentServices";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import DateModal from "../../components/ui/DateModal";
+import Sidebar from "@/components/common/Menu";
 
 const WeeklyCalendar = () => {
   const [weekDays, setWeekDays] = useState<DateTime[]>([]);
