@@ -4,4 +4,5 @@ export interface MessageRequest{
     clientId: number;
     message: string;
     status: 'pending_response' | 'responded';
+    created_at: string;
 }
