@@ -61,8 +61,8 @@ const Requests = () => {
 
 
   return (
-    <div className="flex justify-center items-center w-full h-screen">
-      <div className="border rounded-lg max-w-5xl w-full h-full text-sm flex max-h-[500px]">
+    <div className="flex justify-center items-center w-full h-screen bg-gray-50">
+      <div className="border rounded-lg max-w-5xl w-full h-full text-sm flex max-h-[500px] rounded-lg shadow-md bg-white">
         {messageRequests.length > 0 ? (
           <>
             <div
@@ -122,7 +122,7 @@ const Requests = () => {
                   }
                   className="flex min-h-[60px] w-full rounded-md border border-input bg-transparent text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 p-4"
                 />
-                <button type="submit" className="ml-4 inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-8 rounded-md px-3 text-xs ml-auto">Enviar</button>
+                <button type="submit" className=" ml-4 min-w-[100px] min-h-[50px] bg-blue-600 hover:bg-blue-700 text-white font-semibold p-2 rounded">Enviar</button>
               </div>
             </form>
           </>

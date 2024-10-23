@@ -36,7 +36,7 @@ const Dashboard = () => {
   }, [metrics]);
 
   return (
-    <div className="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 space-y-4 mx-16 my-8">
+    <div className="bg-gray-50 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 space-y-4">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card className="rounded-xl border bg-card text-card-foreground shadow">
           <CardHeader className="p-6 space-y-0 pb-2">
