@@ -1,7 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import Button from "../../components/common/Button";
-import TextInput from "../../components/common/TextInput";
-import customStyles from "./index.module.css";
+import { Button } from "@/components/ui/button"; // Importando o componente Button da shadcn/ui
+import { Input } from "@/components/ui/input"; // Importando o componente Input da shadcn/ui
 import Service from "../../types/Service";
 import servicesOfferedService from "../../services/servicesOfferedService";
 
@@ -40,54 +39,69 @@ const AddServices = () => {
   };
 
   return (
-    <div className={customStyles.addServiceWrapper}>
+    <div className="flex items-center justify-center min-h-screen bg-gray-50">
       <form
-        className={customStyles.addServiceContainer}
+        className="bg-white p-8 rounded-lg shadow-md w-full max-w-lg"
         onSubmit={handleSubmit}
       >
-        <div className={customStyles.fixedFields}>
-          <TextInput
-            handleChange={handleInputChange}
+        <h1 className="text-2xl font-semibold mb-6 text-center">Adicionar Serviço</h1>
+        
+        {/* Campos Fixos */}
+        <div className="mb-4">
+          <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700">Nome do Serviço</label>
+          <Input
+            onChange={handleInputChange}
             name="name"
             placeholder="Digite o nome do serviço"
             type="text"
           />
-          <TextInput
-            handleChange={handleInputChange}
+        </div>
+        
+        <div className="mb-4">
+          <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-700">Descrição</label>
+          <Input
+            onChange={handleInputChange}
             name="description"
             placeholder="Digite uma breve descrição do serviço"
             type="text"
           />
-          <TextInput
-            handleChange={handleInputChange}
+        </div>
+        
+        <div className="mb-6">
+          <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-700">Preço</label>
+          <Input
+            onChange={handleInputChange}
             name="price"
             placeholder="Digite o preço do serviço"
             type="text"
           />
-          <Button type="submit">Cadastrar Serviço</Button>
         </div>
-        <div className={customStyles.variableFields}>
-        <div>
-            {faq.map((_, index) => (
-            <div key={index} className={customStyles.faqWrapper}>
-            <span>Pergunta {index + 1}</span>
-              <TextInput
-                handleChange={(e) => handleFaqChange(index, e)}
+
+        <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded">
+          Cadastrar Serviço
+        </Button>
+
+        {/* Campos Variáveis para FAQ */}
+        <div className="mt-6">
+          {faq.map((_, index) => (
+            <div key={index} className="mb-4">
+              <span className="block mb-2 font-medium text-gray-700">Pergunta {index + 1}</span>
+              <Input
+                onChange={(e) => handleFaqChange(index, e)}
                 name="question"
                 placeholder="Digite a pergunta"
                 type="text"
               />
-              <span>Resposta {index + 1}</span>
-              <TextInput
-                handleChange={(e) => handleFaqChange(index, e)}
+              <span className="block mb-2 font-medium text-gray-700 mt-4">Resposta {index + 1}</span>
+              <Input
+                onChange={(e) => handleFaqChange(index, e)}
                 name="response"
                 placeholder="Digite a resposta"
                 type="text"
               />
             </div>
           ))}
-            </div>
-          <Button type="button" onClick={addFaq}>
+          <Button type="button" onClick={addFaq} className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded">
             Adicionar FAQ
           </Button>
         </div>
