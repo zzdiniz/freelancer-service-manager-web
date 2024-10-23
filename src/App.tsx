@@ -3,7 +3,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Requests from "./pages/Requests";
 import RegisterBot from "./pages/RegisterBot";
-import EditProfile from "./pages/EditProfile";
+import Profile from "./pages/Profile";
 import Calendar from "./pages/Calendar";
 import { UserProvider } from "./context/UserContext";
 import AddServices from "./pages/AddServices";
@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/requests" element={<CustomSidebar><Requests /></CustomSidebar>} />
         <Route path="/register/bot" element={<RegisterBot />} />
         <Route path="/register/service" element={<AddServices />} />
-        <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/profile" element={<CustomSidebar><Profile /></CustomSidebar>} />
         <Route path="/" element={<CustomSidebar><Calendar /></CustomSidebar>} />
       </Routes>
       </UserProvider>

@@ -22,7 +22,7 @@ export const CustomSidebarMenu = ({ navItems }: { navItems: NavItem[] }) => {
             <SidebarMenuButton
               className={`${
                 isActive ? 'bg-gray-400 hover:bg-gray-500' : 'bg-gray-200 hover:bg-gray-300'
-              } transition duration-300 ease-in-out p-2 rounded`} // Aplicando as classes do Tailwind
+              } transition duration-300 ease-in-out p-4 rounded min-h-[40px]`} // Aplicando as classes do Tailwind
               onClick={() => navigate(item.url)}
             >
               {item.icon}

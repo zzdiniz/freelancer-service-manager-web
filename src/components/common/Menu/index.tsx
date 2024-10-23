@@ -14,6 +14,8 @@ import {
   MessagesSquareIcon,
   CalendarDaysIcon,
 } from "lucide-react";
+import {useContext } from "react";
+import { UserContext } from "@/context/UserContext";
 
 const navItems = [
   { title: "Calendar", icon: <CalendarDaysIcon />, url: "/" },
@@ -27,6 +29,8 @@ export default function CustomSidebar({
   children: React.ReactNode;
 }) {
   const isMobile = useDevice();
+  const useAuth = useContext(UserContext);
+  const { provider } = useAuth();
 
   return (
     <SidebarProvider>
@@ -34,7 +38,10 @@ export default function CustomSidebar({
         collapsible={isMobile ? "icon" : "none"}
         className="min-w-[255px] p-2 h-screen"
       >
-        <CustomSidebarHeader />
+        <CustomSidebarHeader
+          providerName={provider?.name ?? "nome"}
+          providerEmail={provider?.email ?? "teste@gmail.com"}
+        />
         <SidebarContent className="overflow-x-hidden">
           <CustomSidebarMenu navItems={navItems} />
         </SidebarContent>
