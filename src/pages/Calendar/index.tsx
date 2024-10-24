@@ -85,9 +85,8 @@ const WeeklyCalendar = () => {
   ];
 
   return (
-    <div>
-      <h1>Calendário Semanal</h1>
-      <div className={customStyles.calendar}>
+    <div className="p-6 bg-gray-50 h-full w-full">
+      <div className={`rounded-xl border bg-card shadow ${customStyles.calendar}`}>
         <table className={customStyles.table}>
           <thead>
             <tr>
