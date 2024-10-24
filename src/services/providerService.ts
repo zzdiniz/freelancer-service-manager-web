@@ -1,3 +1,4 @@
+import Provider from "@/types/Provider";
 import api from "./api";
 
 const providerService = {
@@ -16,6 +17,10 @@ const providerService = {
     respondMessageRequest: async (requestId:number,clientId:number,response:string) => {
         const apiresponse = await api.post(`provider/respond-message-request`,{requestId,clientId,response})
         return await apiresponse.json()
+    },
+    update: async ({name,email,password}:Partial<Provider>) =>{
+        const response = await api.patch(`provider/update`,{name,email,password})
+        return await response.json()
     }
 }
 
