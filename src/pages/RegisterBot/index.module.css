@@ -25,7 +25,6 @@
     display: flex;
     gap: var(--spacing-x-small);
     flex-direction: column;
-    width: 350px;
 }
 .imageWrapper{
     width: 350px;

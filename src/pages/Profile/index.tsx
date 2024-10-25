@@ -24,7 +24,7 @@ const Profile = () => {
   const [bot, setBot] = useState<Bot>();
 
   useEffect(() => {
-    if (provider) {
+    if (provider?.id) {
       setUser({ ...provider });
       (async () => {
         const response = await servicesOfferedService.getAllByProviderId(
@@ -162,7 +162,7 @@ const Profile = () => {
           </form>
         )}
 
-        <div className="flex flex-wrap justify-between gap-4">
+        <div className="flex flex-wrap justify-start gap-4">
           {activeTab === "services" &&
             services.map((service, index) => (
               <form
