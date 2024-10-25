@@ -2,7 +2,7 @@ import {
   SidebarProvider,
   Sidebar,
   SidebarContent,
-  SidebarRail,
+  SidebarFooter,
   SidebarInset,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
@@ -14,13 +14,14 @@ import {
   MessagesSquareIcon,
   CalendarDaysIcon,
 } from "lucide-react";
-import {useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "@/context/UserContext";
+import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { title: "Calendar", icon: <CalendarDaysIcon />, url: "/" },
+  { title: "Calendário", icon: <CalendarDaysIcon />, url: "/" },
   { title: "Dashboard", icon: <LayoutDashboardIcon />, url: "/dashboard" },
-  { title: "Requests", icon: <MessagesSquareIcon />, url: "/requests" },
+  { title: "Solicitações", icon: <MessagesSquareIcon />, url: "/requests" },
 ];
 
 export default function CustomSidebar({
@@ -30,7 +31,7 @@ export default function CustomSidebar({
 }) {
   const isMobile = useDevice();
   const useAuth = useContext(UserContext);
-  const { provider } = useAuth();
+  const { provider, logout } = useAuth();
 
   return (
     <SidebarProvider>
@@ -45,7 +46,14 @@ export default function CustomSidebar({
         <SidebarContent className="overflow-x-hidden">
           <CustomSidebarMenu navItems={navItems} />
         </SidebarContent>
-        <SidebarRail />
+        <SidebarFooter>
+          <Button
+            className="w-full bg-red-600 hover:bg-red-700 text-white"
+            onClick={logout} // Chama a função de logout ao clicar
+          >
+            Sair
+          </Button>
+        </SidebarFooter>
       </Sidebar>
       <SidebarInset>
         {isMobile && (

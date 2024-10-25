@@ -36,3 +36,11 @@ th, td {
 .cell.done {
     background-color: #c8e6c9; /* Cor para status concluído */
 }
+
+.cell.canceled {
+    background-color: #ffccbc; /* Cor suave de vermelho claro para status cancelado */
+}
+
+.cell.unavailable {
+    background-color: #ef9a9a; /* Cor suave de vermelho médio para status indisponível */
+}

@@ -11,9 +11,9 @@ import {
 import providerService from "@/services/providerService";
 import Service from "@/types/Service";
 import servicesOfferedService from "@/services/servicesOfferedService";
-import formatPrice from "@/utils/formatPrice";
 import Bot from "@/types/Bot";
 import botService from "@/services/botService";
+import { toast } from "sonner";
 
 const Profile = () => {
   const useAuth = useContext(UserContext);
@@ -48,8 +48,8 @@ const Profile = () => {
 
   const handleProviderSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await providerService.update({ ...user });
-    alert("Perfil atualizado com sucesso!");
+    const response = await providerService.update({ ...user });
+    toast(response.message);
   };
 
   const handleServiceInputChange = (
@@ -68,20 +68,20 @@ const Profile = () => {
   ) => {
     e.preventDefault();
     const serviceToUpdate = services[index];
-    console.log("🚀 ~ Profile ~ serviceToUpdate:", serviceToUpdate);
+
     try {
-      await servicesOfferedService.update({
+      const response = await servicesOfferedService.update({
         id: serviceToUpdate.id,
         description: serviceToUpdate.description,
         name: serviceToUpdate.name,
         price: serviceToUpdate.price,
       });
-      alert("Serviço atualizado com sucesso!");
+      toast(response.message);
     } catch (error) {
-      alert(`erro: ${error}`);
+      toast(`erro: ${error}`);
     }
   };
-  console.log("🚀 ~ Profile ~ bot:", bot);
+
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       <div className="container mx-auto">
@@ -162,7 +162,7 @@ const Profile = () => {
           </form>
         )}
 
-        <div className="grid grid-cols-4 justify-between gap-4">
+        <div className="flex flex-wrap justify-between gap-4">
           {activeTab === "services" &&
             services.map((service, index) => (
               <form

@@ -2,6 +2,7 @@ import Provider from "../types/Provider";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import providerService from "../services/providerService";
+import { toast } from "sonner"
 
 const baseURL = "http://localhost:3000/";
 
@@ -32,9 +33,11 @@ const useAuth = () => {
       const data = await response.json();
       if (response.status === 200) {
         authUser(data);
-        navigate("/");
+        navigate("/register/service");
       }
+      toast(data.message)
     } catch (error) {
+      toast(`${error}`)
       console.error(error);
     }
   };
@@ -48,6 +51,7 @@ const useAuth = () => {
     setIsAuthenticated(false);
     localStorage.removeItem("token");
     navigate("/login");
+    toast("Usuário deslogado com sucesso")
   };
 
   const login = async (user: Provider | {}) => {
@@ -63,12 +67,14 @@ const useAuth = () => {
       const data = await response.json();
       if (response.status === 200) {
         authUser(data);
-        navigate("/");
+        return navigate("/");
       }
+      toast(data.message)
     } catch (error) {
       console.error(error);
     }
   };
+
   return { registerUser, isAuthenticated, logout, login , provider};
 };
 

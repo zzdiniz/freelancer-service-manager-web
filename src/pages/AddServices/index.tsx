@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"; // Importando o componente Butt
 import { Input } from "@/components/ui/input"; // Importando o componente Input da shadcn/ui
 import Service from "../../types/Service";
 import servicesOfferedService from "../../services/servicesOfferedService";
+import { toast } from "sonner";
 
 interface FAQ {
   question: string;
@@ -32,10 +33,11 @@ const AddServices = () => {
     setFaq([...faq, { question: "", response: "" }]);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const serviceWithfaq = { ...service, faq }; // Inclui os faq ao serviço
-    servicesOfferedService.create(serviceWithfaq as Service);
+    const response = await servicesOfferedService.create(serviceWithfaq as Service);
+    toast(response.message)
   };
 
   return (

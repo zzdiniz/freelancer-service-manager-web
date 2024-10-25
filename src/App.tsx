@@ -9,10 +9,12 @@ import { UserProvider } from "./context/UserContext";
 import AddServices from "./pages/AddServices";
 import Dashboard from "./pages/Dashboard";
 import CustomSidebar from "./components/common/Menu";
+import { Toaster } from "./components/ui/sonner";
 const App = () => {
   return (
     <Router>
       <UserProvider>
+      <Toaster />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
