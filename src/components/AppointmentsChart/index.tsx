@@ -28,7 +28,7 @@ const AppointmentsChart = ({ appointmentsPerMonth }: AppointmentsChartProps) => 
   } satisfies ChartConfig;
 
   return (
-    <Card className="rounded-xl border bg-card text-card-foreground shadow col-span-4">
+    <Card className="rounded-xl border bg-card text-card-foreground shadow col-span-4 max-h-[470px]">
       <CardHeader>
         <CardTitle>Agendamentos Mensais</CardTitle>
       </CardHeader>

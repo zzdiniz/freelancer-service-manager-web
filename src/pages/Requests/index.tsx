@@ -12,11 +12,10 @@ const Requests = () => {
     null
   );
   const [providerResponse, setProviderResponse] = useState("");
-  const [clients, setClients] = useState<Client[]>([]); // Estado para armazenar os clientes
+  const [clients, setClients] = useState<Client[]>([]);
 
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    const { value } = event.target;
-    setProviderResponse(value);
+    setProviderResponse(event.target.value);
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -27,9 +26,9 @@ const Requests = () => {
         currentRequest.clientId,
         providerResponse
       );
-      setProviderResponse(""); // Limpa o campo de resposta após o envio
+      setProviderResponse("");
       setCurrentRequest(null);
-      window.location.reload()
+      window.location.reload();
     }
   };
 
@@ -43,15 +42,11 @@ const Requests = () => {
   useEffect(() => {
     const fetchClients = async () => {
       if (messageRequests.length > 0) {
-        // Extraia os IDs dos clientes das solicitações de mensagem
         const clientIds = messageRequests.map((request) => request.clientId);
-
-        // Recupera os clientes baseando-se nos IDs únicos
-        const uniqueClientIds = Array.from(new Set(clientIds)); // Remove duplicatas
+        const uniqueClientIds = Array.from(new Set(clientIds));
         const clientsData = await Promise.all(
           uniqueClientIds.map((clientId) => clientService.getById(clientId))
         );
-
         setClients(clientsData);
       }
     };
@@ -59,37 +54,36 @@ const Requests = () => {
     fetchClients();
   }, [messageRequests]);
 
-
   return (
-    <div className="flex justify-center items-center w-full h-screen bg-gray-50">
-      <div className="border rounded-lg max-w-5xl w-full h-full text-sm flex max-h-[500px] rounded-lg shadow-md bg-white">
+    <div className="flex justify-center items-center w-full h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700">
+      <div className="border border-gray-700 rounded-lg max-w-5xl w-full h-full text-sm flex max-h-[500px] shadow-lg bg-gray-800">
         {messageRequests.length > 0 ? (
           <>
             <div
-              className={`flex flex-col gap-3 p-6 border-r max-h-full overflow-y-scroll overflow-x-hidden ${customStyles.customScroll} min-w-[300px]`}
+              className={`flex flex-col gap-3 p-6 border-r border-gray-700 max-h-full overflow-y-scroll overflow-x-hidden ${customStyles.customScroll} min-w-[300px]`}
             >
-              <div className="flex gap-2 items-center text-2xl font-medium">
+              <div className="flex gap-2 items-center text-2xl font-medium text-white">
                 Chats{" "}
-                <span className="text-zinc-300">
+                <span className="text-gray-400">
                   ({messageRequests.length})
                 </span>
               </div>
               {messageRequests.map((messageRequest) => (
                 <div
-                  key={messageRequest.id} // Adiciona uma chave única para cada item
-                  className={`flex flex-col text-m font-medium min-h-[64px] w-full justify-center hover:bg-accent rounded-xl p-3 ${
-                    currentRequest?.id === messageRequest.id && "bg-accent"
+                  key={messageRequest.id}
+                  className={`flex flex-col text-m font-medium min-h-[64px] w-full justify-center hover:bg-gray-700 rounded-lg p-3 cursor-pointer ${
+                    currentRequest?.id === messageRequest.id && "bg-gray-700"
                   }`}
                   onClick={() => setCurrentRequest(messageRequest)}
                 >
-                  <p>
+                  <p className="text-white">
                     {
                       clients.find(
                         (client) => client.id === messageRequest.clientId
                       )?.name
                     }
                   </p>
-                  <p className="text-zinc-300 text-sm">
+                  <p className="text-gray-400 text-sm">
                     {DateTime.fromISO(messageRequest.created_at)
                       .setZone("America/Sao_Paulo")
                       .toFormat("dd/MM HH:mm")}
@@ -98,18 +92,18 @@ const Requests = () => {
               ))}
             </div>
             <form
-              className={`w-full h-full flex flex-col ${currentRequest?'justify-between':'justify-end'} p-6`}
+              className={`w-full h-full flex flex-col ${currentRequest ? 'justify-between' : 'justify-end'} p-6`}
               onSubmit={handleSubmit}
             >
               {currentRequest && (
-                <p className="p-4 bg-secondary text-secondary-foreground rounded-r-lg rounded-tl-lg break-words max-w-[400px] whitespace-pre-wrap">
+                <p className="p-4 bg-gray-700 text-gray-200 rounded-r-lg rounded-tl-lg break-words max-w-[400px] whitespace-pre-wrap">
                   {currentRequest?.message}
                 </p>
               )}
               <div className="flex items-center">
                 <textarea
                   name="providerResponse"
-                  value={providerResponse} // Para controle do valor do input
+                  value={providerResponse}
                   onChange={handleInputChange}
                   placeholder={
                     currentRequest
@@ -120,14 +114,19 @@ const Requests = () => {
                         }`
                       : ""
                   }
-                  className="flex min-h-[60px] w-full rounded-md border border-input bg-transparent text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 p-4"
+                  className="flex min-h-[60px] w-full rounded-lg border border-gray-600 bg-gray-700 text-sm text-gray-100 shadow-sm placeholder-gray-400 focus:border-indigo-500 focus:ring-indigo-500 focus:ring-opacity-50 p-4"
                 />
-                <button type="submit" className=" ml-4 min-w-[100px] min-h-[50px] bg-blue-600 hover:bg-blue-700 text-white font-semibold p-2 rounded">Enviar</button>
+                <button
+                  type="submit"
+                  className="ml-4 min-w-[100px] min-h-[50px] bg-indigo-600 hover:bg-indigo-700 text-white font-semibold p-2 rounded-lg transition-all duration-300 ease-in-out"
+                >
+                  Enviar
+                </button>
               </div>
             </form>
           </>
         ) : (
-          <h1>Não foram encontradas mensagens</h1>
+          <h1 className="text-gray-200">Não foram encontradas mensagens</h1>
         )}
       </div>
     </div>

@@ -9,24 +9,25 @@ interface NavItem {
 
 export const CustomSidebarMenu = ({ navItems }: { navItems: NavItem[] }) => {
   const navigate = useNavigate();
-  const location = useLocation(); // Obter a localização atual
-  
+  const location = useLocation();
+
   return (
-    <SidebarMenu>
+    <SidebarMenu className="space-y-2">
       {navItems.map((item) => {
-        // Verifica se a URL do item é igual ao caminho atual
         const isActive = location.pathname === item.url;
 
         return (
-          <SidebarMenuItem key={item.title}>
+          <SidebarMenuItem key={item.title} className="w-full">
             <SidebarMenuButton
-              className={`${
-                isActive ? 'bg-gray-400 hover:bg-gray-500' : 'bg-gray-200 hover:bg-gray-300'
-              } transition duration-300 ease-in-out p-4 rounded min-h-[40px]`} // Aplicando as classes do Tailwind
+              className={`flex items-center gap-4 w-full px-4 py-3 rounded-lg transition duration-300 ease-in-out ${
+                isActive
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white"
+              }`}
               onClick={() => navigate(item.url)}
             >
-              {item.icon}
-              <span>{item.title}</span>
+              <div className="text-xl">{item.icon}</div>
+              <span className="text-sm font-semibold">{item.title}</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         );

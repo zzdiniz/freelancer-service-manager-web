@@ -48,10 +48,10 @@ const OccupationRateChart = ({ occupationRate }: OccupationRateChartProps) => {
   } satisfies ChartConfig;
   return (
     <Card className="flex flex-col">
-      <CardHeader className="items-center pb-0">
+      <CardHeader className="items-center p-4 pb-0">
         <CardTitle>Taxa de Ocupação</CardTitle>
       </CardHeader>
-      <CardContent className="flex-1 pb-0">
+      <CardContent className="flex-1 pb-0 max-h-[230px]">
         <ChartContainer
           config={chartConfig}
           className="mx-auto aspect-square max-h-[250px]"
@@ -65,7 +65,7 @@ const OccupationRateChart = ({ occupationRate }: OccupationRateChartProps) => {
           </PieChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
+      <CardFooter className="flex-col gap-2 text-sm pb-4">
         <div className="leading-none text-muted-foreground">
           Quantidade de horários disponíveis/ocupados nesta semana
         </div>

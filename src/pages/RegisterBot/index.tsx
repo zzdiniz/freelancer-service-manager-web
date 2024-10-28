@@ -15,11 +15,11 @@ const RegisterBot = () => {
   const navigate = useNavigate();
   const { provider } = useAuth();
 
-  useEffect(()=>{
-    if(provider?.id){
-      verifyBot(provider.id)
+  useEffect(() => {
+    if (provider?.id) {
+      verifyBot(provider.id);
     }
-  },[provider])
+  }, [provider]);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -34,8 +34,8 @@ const RegisterBot = () => {
       setIsLoading(false);
       setQrcode(response.image);
     } catch (error) {
-      setIsLoading(false)
-      toast("Você precisa definir um nome para o bot")
+      setIsLoading(false);
+      toast("Você precisa definir um nome para o bot");
     }
   };
 
@@ -43,8 +43,8 @@ const RegisterBot = () => {
     try {
       const response = await botService.getByProviderId(providerId);
       toast("Bem vindo!");
-      if(response){
-        navigate("/")
+      if (response) {
+        navigate("/");
       }
     } catch (error) {
       toast("Parece que houve um problema ao cadastrar seu bot.", {
@@ -54,16 +54,17 @@ const RegisterBot = () => {
       setQrcode("");
     }
   };
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50">
-      <div className="bg-white p-8 rounded-lg shadow-md flex items-center">
-        <div className="flex flex-col justify-center items-center">
-          <h1 className="text-2xl font-semibold mb-2 text-center">
-            Cadastrar bot
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700">
+      <div className="bg-gray-800 p-10 rounded-2xl shadow-lg flex items-center border border-gray-700 w-full max-w-4xl">
+        <div className="flex flex-col justify-center items-center w-full max-w-sm">
+          <h1 className="text-3xl font-bold text-white mb-4 text-center">
+            Cadastrar Bot
           </h1>
-          <p className="max-w-[300px] text-center text-sm mb-2 text-gray-400">
-            Defina um nome ao bot que seus clientes irão interagir para agendar
-            serviços, tirar dúvidas e solicitar mensagens
+          <p className="max-w-xs text-center text-sm mb-4 text-gray-400">
+            Defina um nome para o bot que seus clientes irão interagir para
+            agendar serviços, tirar dúvidas e solicitar mensagens
           </p>
           <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
             <Input
@@ -71,19 +72,19 @@ const RegisterBot = () => {
               placeholder="Insira o nome do seu bot"
               type="text"
               onChange={handleInputChange}
-              className="mb-4 min-h-[45px]"
+              className="mb-4 px-4 py-2 rounded-lg text-gray-100 bg-gray-700 border border-gray-600 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
             />
             <Button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded min-h-[45px]"
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition-all duration-300 ease-in-out"
             >
               Enviar
             </Button>
           </form>
-          {(qrcode) && (
+          {qrcode && (
             <Button
               type="button"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded mt-6 min-h-[45px]"
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg mt-6 transition-all duration-300 ease-in-out"
               onClick={() => {
                 verifyBot(provider?.id as number);
               }}
@@ -92,26 +93,26 @@ const RegisterBot = () => {
             </Button>
           )}
         </div>
-        <div className="ml-6 pl-4 border-l border-gray-200 flex flex-col justify-center items-center max-w-[330px] min-w-[300px] w-full">
+        <div className="ml-8 pl-6 border-l border-gray-700 flex flex-col justify-center items-center w-full">
           {isLoading ? (
             <Loader width={50} />
           ) : qrcode ? (
-            <img src={qrcode} alt="qrcode" className="mt-4" />
+            <img src={qrcode} alt="qrcode" className="mt-4 rounded-lg" />
           ) : (
             <>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2 text-center">
-                Antes de inserir um nome para o bot siga os passos a seguir:
+              <h3 className="text-lg font-semibold text-gray-200 mb-4 text-center">
+                Antes de inserir um nome para o bot, siga os passos abaixo:
               </h3>
-              <ol className="list-decimal pl-5 text-gray-600 space-y-2 mb-4">
-                <li>Abra seu aplicativo do telegram</li>
+              <ol className="list-decimal pl-5 text-gray-400 space-y-2 mb-4">
+                <li>Abra seu aplicativo do Telegram</li>
                 <li>Navegue até "Configurações" → "Dispositivos"</li>
                 <li>Clique no botão "Conectar Desktop"</li>
                 <li>Insira um nome para o seu bot e clique em "Enviar"</li>
                 <li>Aponte seu celular para o QR code que irá aparecer</li>
                 <li>Após escanear, clique em "Ir para página inicial"</li>
               </ol>
-              <p className="text-sm text-gray-400 text-center">
-                Pronto! Agora você possui um bot do telegram
+              <p className="text-sm text-gray-500 text-center">
+                Pronto! Agora você possui um bot do Telegram.
               </p>
             </>
           )}

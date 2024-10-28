@@ -37,19 +37,19 @@ export default function CustomSidebar({
     <SidebarProvider>
       <Sidebar
         collapsible={isMobile ? "icon" : "none"}
-        className="min-w-[255px] p-2 h-screen"
+        className="min-w-[255px] p-4 h-screen bg-gray-800 text-gray-100 shadow-lg border-r border-gray-700 h-screen"
       >
         <CustomSidebarHeader
           providerName={provider?.name ?? "nome"}
           providerEmail={provider?.email ?? "teste@gmail.com"}
         />
-        <SidebarContent className="overflow-x-hidden">
+        <SidebarContent className="overflow-x-hidden mt-4">
           <CustomSidebarMenu navItems={navItems} />
         </SidebarContent>
-        <SidebarFooter>
+        <SidebarFooter className="mt-auto p-2">
           <Button
-            className="w-full bg-red-600 hover:bg-red-700 text-white"
-            onClick={logout} // Chama a função de logout ao clicar
+            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-lg transition-all duration-300 ease-in-out"
+            onClick={logout}
           >
             Sair
           </Button>
@@ -57,8 +57,8 @@ export default function CustomSidebar({
       </Sidebar>
       <SidebarInset>
         {isMobile && (
-          <header className="flex h-16 shrink-0 items-center justify-between gap-2">
-            <SidebarTrigger className="-ml-1" />
+          <header className="flex h-16 items-center justify-between gap-2 bg-gray-900 px-4 shadow-md">
+            <SidebarTrigger className="-ml-1 text-gray-100" />
           </header>
         )}
         {children}

@@ -23,33 +23,33 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700">
       <form
-        className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm"
+        className="bg-gray-800 p-10 rounded-2xl shadow-lg w-full max-w-md border border-gray-700"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-2xl font-semibold mb-6 text-center">Login</h1>
+        <h1 className="text-3xl font-bold text-white mb-8 text-center">Entrar</h1>
         <Input
-          placeholder="Digite seu email"
+          placeholder="Seu email"
           type="email"
           name="email"
           onChange={handleInputChange}
-          className="mb-4"
+          className="mb-4 px-4 py-2 rounded-lg text-gray-100 bg-gray-700 border border-gray-600 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
         />
         <Input
-          placeholder="Digite sua senha"
+          placeholder="Sua senha"
           type="password"
           name="password"
           onChange={handleInputChange}
-          className="mb-6"
+          className="mb-6 px-4 py-2 rounded-lg text-gray-100 bg-gray-700 border border-gray-600 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
         />
-        <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded">
-          Login
+        <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition-all duration-300 ease-in-out">
+          Entrar
         </Button>
-        <p className="mt-4 text-center">
-          Não tem uma conta?{" "}
-          <Link to="/register" className="text-blue-600 hover:underline">
-            Registre-se
+        <p className="mt-6 text-center text-gray-400">
+          Não possui conta?{" "}
+          <Link to="/register" className="text-indigo-500 hover:text-indigo-400 transition-all duration-300">
+            Cadastre-se
           </Link>
         </p>
       </form>
