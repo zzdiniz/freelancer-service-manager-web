@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import providerService from "../services/providerService";
 import { toast } from "sonner"
 
-const baseURL = "http://localhost:3000/";
+const baseURL = "https://freelancer-service-manager-api.vercel.app/";
 
 const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
