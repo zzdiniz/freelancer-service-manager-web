@@ -6,6 +6,7 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+
 import { CustomSidebarHeader } from "./CustomSidebarHeader";
 import { CustomSidebarMenu } from "./CustomSidebarMenu";
 import useDevice from "@/hooks/useDevice";
@@ -34,10 +35,10 @@ export default function CustomSidebar({
   const { provider, logout } = useAuth();
 
   return (
-    <SidebarProvider>
+    <SidebarProvider className="grid grid-rows-[100vh] grid-cols-[260px_1fr]">
       <Sidebar
         collapsible={isMobile ? "icon" : "none"}
-        className="min-w-[255px] p-4 h-screen bg-gray-800 text-gray-100 shadow-lg border-r border-gray-700 h-screen"
+        className="min-w-full p-4 h-screen bg-gray-800 text-gray-100 shadow-lg border-r border-gray-700 h-screen"
       >
         <CustomSidebarHeader
           providerName={provider?.name ?? "nome"}

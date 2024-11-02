@@ -18,6 +18,7 @@ interface DateModalProps {
   appointmentId?: number;
   serviceId?: number;
   date: string;
+  setAppointments: Dispatch<SetStateAction<Appointment[]>>
 }
 
 const createUnavailableDate = async (appointment: Appointment) => {
@@ -34,6 +35,7 @@ const DateModal = ({
   appointmentId,
   isModalOpen,
   setIsModalOpen,
+  setAppointments
 }: DateModalProps) => {
   const [service, setService] = useState<Service>();
   const useAuth = useContext(UserContext);
@@ -73,9 +75,11 @@ const DateModal = ({
                 agendado para: <strong>{date}</strong>?
               </p>
               <Button
-                onClick={() => {
-                  cancelAppointment(appointmentId as number);
-                  window.location.reload();
+                onClick={async () => {
+                  await cancelAppointment(appointmentId as number);
+                  const response = (await appointmentService.getAll()) as Appointment[];
+                  setAppointments(response);
+                  setIsModalOpen(false)
                 }}
                 className="mt-4 bg-red-600 hover:bg-red-700 text-white"
               >
@@ -89,13 +93,15 @@ const DateModal = ({
                 indisponível?
               </p>
               <Button
-                onClick={() => {
-                  createUnavailableDate({
+                onClick={async() => {
+                  await createUnavailableDate({
                     datetime: date,
                     status: "unavailable",
                     providerId: provider?.id as number,
                   });
-                  window.location.reload();
+                  const response = (await appointmentService.getAll()) as Appointment[];
+                  setAppointments(response);
+                  setIsModalOpen(false)
                 }}
                 className="mt-4 bg-yellow-500 hover:bg-yellow-600 text-white"
               >

@@ -50,7 +50,6 @@ const WeeklyCalendar = () => {
         startOfWeek.plus({ days: index })
       );
       setWeekDays(days);
-      
       const response = (await appointmentService.getAll()) as Appointment[];
       setAppointments(response);
     })();
@@ -58,7 +57,7 @@ const WeeklyCalendar = () => {
 
   const getAppointment = (date: DateTime) => {
     const appointment = appointments.find((app) => {
-      const appointmentDateTime = DateTime.fromISO(app.datetime).setZone("America/Sao_Paulo");
+      const appointmentDateTime = DateTime.fromISO(app.datetime).plus({hours:3});
       return (
         appointmentDateTime.hasSame(date, "day") &&
         appointmentDateTime.hasSame(date, "hour")
@@ -129,6 +128,7 @@ const WeeklyCalendar = () => {
         serviceId={modalInfo.serviceId}
         date={modalInfo.date as string}
         appointmentId={modalInfo.appointmentId}
+        setAppointments={setAppointments}
       />
     </div>
   );

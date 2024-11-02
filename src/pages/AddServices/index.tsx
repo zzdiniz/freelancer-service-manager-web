@@ -12,8 +12,12 @@ interface FAQ {
 }
 
 const AddServices = () => {
-  const [service, setService] = useState<Service | {}>({});
-  const [faq, setFaq] = useState<FAQ[]>([]);
+  const [service, setService] = useState<Service>({
+    name: '',
+    description: '',
+    price: 0,
+  });
+  const [faq, setFaq] = useState<FAQ[]>([{question: "", response: ""}]);
   const navigate = useNavigate();
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +44,12 @@ const AddServices = () => {
     const serviceWithfaq = { ...service, faq };
     const response = await servicesOfferedService.create(serviceWithfaq as Service);
     toast(response.message);
-    window.location.reload();
+    setService(({
+      name: '',
+      description: '',
+      price: 0,
+    }))
+    setFaq([{question: "", response: ""}])
   };
 
   return (
@@ -59,6 +68,7 @@ const AddServices = () => {
             name="name"
             placeholder="Digite o nome do serviço"
             type="text"
+            value={service.name}
             className="px-4 py-2 rounded-lg text-gray-100 bg-gray-700 border border-gray-600 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
           />
         </div>
@@ -67,6 +77,7 @@ const AddServices = () => {
           <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-400">Descrição</label>
           <Input
             onChange={handleInputChange}
+            value={service.description}
             name="description"
             placeholder="Digite uma breve descrição do serviço"
             type="text"
@@ -78,6 +89,7 @@ const AddServices = () => {
           <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-400">Preço</label>
           <Input
             onChange={handleInputChange}
+            value={service.price}
             name="price"
             placeholder="Digite o preço do serviço"
             type="text"
@@ -100,6 +112,7 @@ const AddServices = () => {
               <Input
                 onChange={(e) => handleFaqChange(index, e)}
                 name="question"
+                value={service?.faq?.[index].question}
                 placeholder="Digite a pergunta"
                 type="text"
                 className="px-4 py-2 rounded-lg text-gray-100 bg-gray-700 border border-gray-600 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
@@ -109,6 +122,7 @@ const AddServices = () => {
                 onChange={(e) => handleFaqChange(index, e)}
                 name="response"
                 placeholder="Digite a resposta"
+                value={service?.faq?.[index].question}
                 type="text"
                 className="px-4 py-2 rounded-lg text-gray-100 bg-gray-700 border border-gray-600 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
               />

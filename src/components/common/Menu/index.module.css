@@ -1,0 +1,6 @@
+
+.sidebar{
+    display: grid;
+    grid-template-rows: 100vh;
+    grid-template-columns: 260px 1fr;
+}

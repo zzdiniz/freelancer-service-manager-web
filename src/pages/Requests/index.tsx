@@ -18,17 +18,18 @@ const Requests = () => {
     setProviderResponse(event.target.value);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (currentRequest) {
-      providerService.respondMessageRequest(
+      await providerService.respondMessageRequest(
         currentRequest?.id as number,
         currentRequest.clientId,
         providerResponse
       );
       setProviderResponse("");
       setCurrentRequest(null);
-      window.location.reload();
+      const response = await providerService.getMessageRequests();
+      setMessageRequests(response.requests);
     }
   };
 
