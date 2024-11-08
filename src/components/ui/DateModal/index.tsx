@@ -59,7 +59,7 @@ const DateModal = ({
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-semibold">Confirmação de Agendamento</h2>
+          <h2 className="text-lg font-semibold">Confirmação de Cancelamento</h2>
           <button
             className="text-gray-600 hover:text-gray-800"
             onClick={() => setIsModalOpen(false)}

@@ -6,6 +6,7 @@ import appointmentService from "../../services/appointmentServices";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import DateModal from "../../components/ui/DateModal";
+import translateStatus from "@/utils/translateStatus";
 
 const getStatusColor = (status:string): string => {
   switch (status) {
@@ -112,7 +113,7 @@ const WeeklyCalendar = () => {
                           });
                         }}
                       >
-                        <p className="text-base font-bold text-gray-100">{status}</p>
+                        <p className="text-base font-bold text-gray-100">{translateStatus(status)}</p>
                       </td>
                     );
                   })}
