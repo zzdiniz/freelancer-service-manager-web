@@ -16,7 +16,7 @@ const RegisterBot = () => {
   const { provider } = useAuth();
 
   useEffect(() => {
-    if (provider?.id) {
+    if (provider?.id && qrcode) {
       verifyBot(provider.id);
     }
   }, [provider]);
