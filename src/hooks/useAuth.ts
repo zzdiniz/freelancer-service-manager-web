@@ -1,6 +1,6 @@
 import Provider from "../types/Provider";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import providerService from "../services/providerService";
 import { toast } from "sonner"
 
@@ -10,8 +10,12 @@ const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [provider,setProvider] = useState<Provider>()
   const navigate = useNavigate();
+  const {pathname} = useLocation()
   useEffect(() => {
     const token = localStorage.getItem("token");
+    if(!token && (pathname === "/" || pathname === "/dashboard" || pathname === "/requests" || pathname === "/profile")) {
+      navigate("/login")
+    }
     if (token) {
       setIsAuthenticated(true);
       (async()=>{
