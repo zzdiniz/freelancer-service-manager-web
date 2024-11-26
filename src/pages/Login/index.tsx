@@ -1,4 +1,4 @@
-import { useContext, useState, ChangeEvent, FormEvent } from "react";
+import { useContext, useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Button } from "@/components/ui/button"; // Importando o componente Button da shadcn/ui
 import { Input } from "@/components/ui/input"; // Importando o componente TextInput da shadcn/ui
@@ -10,7 +10,7 @@ const Login = () => {
     password: "",
   });
   const useAuth = useContext(UserContext);
-  const { login } = useAuth();
+  const { login,isAuthenticated } = useAuth();
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -21,7 +21,9 @@ const Login = () => {
     event.preventDefault();
     login(user);
   };
-
+  useEffect(()=>{
+    !isAuthenticated && alert("Usuário para testes:\nemail: brunoFerrarezzo@gmail.com\nsenha: 1234")
+  },[])
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700">
       <form
